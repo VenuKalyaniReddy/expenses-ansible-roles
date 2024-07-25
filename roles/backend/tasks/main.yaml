@@ -1,0 +1,63 @@
+- name: backend server
+  hosts: backend
+  become: yes
+  tasks:
+    - name: diasbling  nodejs
+      ansible.builtin.command: dnf module disable nodejs -y
+    
+    - name: enabling nodejs 20
+      ansible.builtin.commond: dnf module enable nodejs:20 -y
+
+    - name: install nodejs
+      ansible.builtin.dnf: dnf install nodejs -y
+
+    - name: user add
+      ansible.builtin.user: 
+        name: expense
+        state: present
+
+    - name: create app directory
+      ansible.buitlin.file:
+        name: app
+        state: present
+
+    - name: downloading the backend application url
+      ansible.buitin.import_role: 
+        name: common
+        vars_file: appsetup
+
+    - name: unzipping the application
+      ansible.builtin.import_role:
+        name: common
+        vars_file: appsetup
+    
+    - name: install dependencies
+      ansible.builtin.command: npm install
+
+    - name: copying backend service file
+      ansible.builtin.copy: 
+        src: backend.service.j2
+        dest: /etc/systemd/system/backend.service
+      
+    - name: deamon-reload
+      ansible.builtin.systemd_service:
+        deamond_reload: true
+
+    - name: mysql installation
+      ansible.builtin.import_role:
+        name: common
+        vars_file: mysqlinstall
+
+    - name: assigining password 
+      ansible.builtin.command: mysql -h MYSQL -uroot -p{{PASSWORD}} < /app/schema/backend.sql
+    
+    - name: restart backend
+      ansible.builtin.service:
+        name: backend
+        state: started 
+        enabled: yes
+
+        
+    
+
+

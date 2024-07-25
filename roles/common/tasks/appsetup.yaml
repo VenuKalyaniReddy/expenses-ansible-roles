@@ -1,0 +1,14 @@
+- name: "downloading the {{component}}"
+  ansible.builtin.get_url: 
+    url: curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{component}}-v2.zip
+    dest: /tmp/{{component}}.zip
+
+
+- name: "unzipping the application"
+  ansible.builtin.unarchive:
+    src: /tmp/{{component}}.zip
+    dest: /app
+    remote_src: yes
+    
+
+

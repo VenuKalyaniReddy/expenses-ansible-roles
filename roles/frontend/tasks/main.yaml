@@ -1,0 +1,34 @@
+- name: install frontend 
+  hosts: frontend
+  become: yes
+  tasks:
+    - name: install nginx
+      ansible.builtin.dnf: 
+        name: nginx
+        state: present
+        enabled: yes
+
+    - name: remove default html file
+      ansible.builtin.file:
+        path: /usr/share/nginx/html/*
+        state: present
+
+    - name: download the frontend application
+      ansible.builtin.import_role: 
+        name: common
+        vars_file: appsetup
+
+    - name: extract application
+      ansible.builtin.import_role: 
+        name: common
+        vars_file: appsetup   
+
+    - name: copy the expenses configuration
+      ansible.builtin.copy: 
+        src: expense.conf.j2
+        dest: /etc/nginx/default.d/expense.conf
+      notify:
+        - restated
+
+       
+
