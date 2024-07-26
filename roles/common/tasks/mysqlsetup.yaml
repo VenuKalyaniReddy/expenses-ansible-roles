@@ -1,3 +1,9 @@
+- name: install mysql
+  ansible.builtin.dnf:
+    name: mysqld
+    state: present
+
+
 - name: restart the mysql
   ansible.builtin.service:
     name: mysqld
