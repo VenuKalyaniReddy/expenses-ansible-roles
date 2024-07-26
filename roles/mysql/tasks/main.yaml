@@ -1,17 +1,13 @@
-- name: remove mysql
-  ansible.builtin.command: dnf remove  mysql-server -y
-
-
-- name: installing mysql
+- name: Install MySQL Server
   ansible.builtin.command: dnf install mysql-server -y
-   
 
-- name: start and enabling mysql
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: mysqlsetup
-
-- name: assaign root password for mysql
-  ansible.builtin.command: 'mysql_secure_installation --set-root-pass {{PASSWORD}}'
+- name: enableing mysql
+  ansible.builtin.service:
+    name: mysqld 
+    enabled: yes
+    state: started
+    
+- name: seting root password 
+  ansible.builtin.command: mysql_secure_installation --set-root-pass {{ sql_password }}
 
 
