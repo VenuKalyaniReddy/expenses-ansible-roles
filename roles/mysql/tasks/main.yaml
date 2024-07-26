@@ -1,18 +1,14 @@
-- name: mysql installation
-  hosts: mysql
-  become: yes
-  tasks:
-    - name: installing mysql
-      ansible.builtin.import_role:
-        name: common
-        tasks_from: mysqlsetup
+- name: installing mysql
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: mysqlsetup
 
-    - name: start and enabling mysql
-      ansible.builtin.import_role:
-        name: common
-        tasks_from: mysqlsetup
+- name: start and enabling mysql
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: mysqlsetup
 
-    - name: assaign rot password for mysql
-      ansible.builtin.common: 'mysql_secure_installation --set-root-pass {{PASSWORD}}'
+- name: assaign rot password for mysql
+  ansible.builtin.common: 'mysql_secure_installation --set-root-pass {{PASSWORD}}'
 
-  
+
