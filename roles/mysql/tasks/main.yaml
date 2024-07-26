@@ -1,3 +1,7 @@
+- name: remove mysql
+  ansible.builtin.command: dnf remove  mysql-server -y
+
+
 - name: installing mysql
   ansible.builtin.command: dnf install mysql-server -y
    
