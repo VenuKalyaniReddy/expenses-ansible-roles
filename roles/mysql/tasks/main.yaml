@@ -1,7 +1,6 @@
 - name: installing mysql
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: mysqlsetup
+  ansible.builtin.command: dnf install mysql-server -y
+   
 
 - name: start and enabling mysql
   ansible.builtin.import_role:
