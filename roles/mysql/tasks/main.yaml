@@ -8,7 +8,7 @@
     name: common
     tasks_from: mysqlsetup
 
-- name: assaign rot password for mysql
-  ansible.builtin.common: 'mysql_secure_installation --set-root-pass {{PASSWORD}}'
+- name: assaign root password for mysql
+  ansible.builtin.command: 'mysql_secure_installation --set-root-pass {{PASSWORD}}'
 
 
