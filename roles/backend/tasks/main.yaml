@@ -18,7 +18,7 @@
     state: directory
 
 - name: downloading the backend application url
-  ansible.buitin.import_role: 
+  ansible.builtin.import_role: 
     name: common
     vars_file: appsetup
 
