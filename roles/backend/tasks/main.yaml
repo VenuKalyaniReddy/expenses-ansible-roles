@@ -15,7 +15,7 @@
 - name: create app directory
   ansible.buitlin.file:
     name: app
-    state: present
+    state: directory
 
 - name: downloading the backend application url
   ansible.buitin.import_role: 
