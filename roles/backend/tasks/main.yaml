@@ -45,7 +45,7 @@
   
 - name: deamon-reload
   ansible.builtin.systemd_service:
-    deamond_reload: true
+    daemon_reload: true
 
 - name: mysql installation
   ansible.builtin.import_role:
