@@ -1,10 +1,14 @@
 
-MYSQL: mysql.aidevops.website
+# MYSQL: mysql.aidevops.website
 
 
-BACKEND: backend.aidevops.website
+# BACKEND: backend.aidevops.website
 
 
-FRONTEND: frontend.aidevops.website
+# FRONTEND: frontend.aidevops.website
 
+MYSQL_HOST: mysql.aidevops.website
 sql_password: ExpenseApp@1
+# MY_HOST: mysql.bigmatrix.in
+APP_LOCATION: /app
+component: backend
