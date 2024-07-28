@@ -16,7 +16,7 @@
 
   - name: create app directory
     ansible.builtin.file:
-      name: app
+      name: /app
       state: directory
 
   - name: download the frontend application
