@@ -7,7 +7,7 @@
     - name: remove default html file
       ansible.builtin.file:
         path: /usr/share/nginx/html/*
-        state: present
+        state: absent
 
     - name: download the frontend application
       ansible.builtin.import_role: 
