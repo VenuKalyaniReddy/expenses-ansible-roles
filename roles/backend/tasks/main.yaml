@@ -20,12 +20,12 @@
 - name: downloading the backend application url
   ansible.builtin.import_role: 
     name: common
-    vars_file: appsetup
+    tasks_from: appsetup
 
 - name: unzipping the application
   ansible.builtin.import_role:
     name: common
-    vars_file: appsetup
+    tasks_from: appsetup
 
 - name: install dependencies
   ansible.builtin.command: npm install
@@ -42,10 +42,10 @@
 - name: mysql installation
   ansible.builtin.import_role:
     name: common
-    vars_file: mysqlinstall
+    tasks_from: mysqlinstall
 
 - name: assigining password 
-  ansible.builtin.command: mysql -h {{ MYSQL_HOST }} -uroot -p{{PASSWORD}} < /app/schema/backend.sql
+  ansible.builtin.command: mysql -h {{ MYSQL_HOST }} -uroot -p{{ PASSWORD }} < /app/schema/backend.sql
 
 - name: restart backend
   ansible.builtin.service:
