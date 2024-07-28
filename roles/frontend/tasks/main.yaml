@@ -23,6 +23,7 @@
     ansible.builtin.import_role: 
       name: common
       tasks_from: appsetup   
+      
 
   - name: copy the expenses configuration
     ansible.builtin.copy: 
