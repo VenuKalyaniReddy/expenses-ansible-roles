@@ -55,8 +55,8 @@
     name: common
     tasks_from: mysqlsetup
 
-- name: assigining password 
-  ansible.builtin.command: mysql -h {{ MYSQL_HOST }} -uroot -p{{ PASSWORD }} < /app/schema/backend.sql
+- name: seting root password 
+  ansible.builtin.command: mysql_secure_installation --set-root-pass {{ sql_password }}
 
 - name: restart backend
   ansible.builtin.service:
