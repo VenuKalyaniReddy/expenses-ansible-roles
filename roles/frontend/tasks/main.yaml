@@ -12,12 +12,12 @@
     - name: download the frontend application
       ansible.builtin.import_role: 
         name: common
-        vars_file: appsetup
+        tasks_from: appsetup
 
     - name: extract application
       ansible.builtin.import_role: 
         name: common
-        vars_file: appsetup   
+        tasks_from: appsetup   
 
     - name: copy the expenses configuration
       ansible.builtin.copy: 
