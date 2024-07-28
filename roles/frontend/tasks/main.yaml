@@ -10,7 +10,7 @@
       state: started
 
   - name: remove default html file
-    ansible.builtin.command: rm -rf /usr/share/nginx/html/*
+    ansible.builtin.command: rm -rf {{APP_LOCATION}}/*
       
 
   - name: create app directory
