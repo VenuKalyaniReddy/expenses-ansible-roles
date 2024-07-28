@@ -1,8 +1,13 @@
   - name: install nginx
-    ansible.builtin.package: 
+    ansible.builtin.dnf: 
       name: nginx
       state: present
+    
+  - name: Enable nginx
+    ansible.builtin.service:
+      name: nginx
       enabled: yes
+      state: started
 
   - name: remove default html file
     ansible.builtin.file:
