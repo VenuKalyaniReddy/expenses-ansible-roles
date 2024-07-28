@@ -10,9 +10,8 @@
       state: started
 
   - name: remove default html file
-    ansible.builtin.file:
-      path: /usr/share/nginx/html/*
-      state: absent
+    ansible.builtin.command: /usr/share/nginx/html/*
+      
 
   - name: create app directory
     ansible.builtin.file:
