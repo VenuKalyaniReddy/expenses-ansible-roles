@@ -13,10 +13,10 @@
     ansible.builtin.command: rm -rf {{APP_LOCATION}}/*
       
 
-  - name: create app directory
-    ansible.builtin.file:
-      name: /app
-      state: directory
+  # - name: create app directory
+  #   ansible.builtin.file:
+  #     name: /app
+  #     state: directory
 
   - name: download the frontend application
     ansible.builtin.import_role: 
