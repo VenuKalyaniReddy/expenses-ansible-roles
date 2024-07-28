@@ -6,3 +6,5 @@ BACKEND: backend.aidevops.website
 
 
 FRONTEND: frontend.aidevops.website
+
+sql_password: ExpenseApp@1
