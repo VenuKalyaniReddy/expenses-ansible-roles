@@ -7,7 +7,7 @@
 - name: "unzipping the application"
   ansible.builtin.unarchive:
     src: /tmp/{{component}}.zip
-    dest: app
+    dest: /app
     remote_src: yes
     
 
