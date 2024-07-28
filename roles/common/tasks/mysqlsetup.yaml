@@ -1,11 +1,11 @@
-- name: install mysql 
-  ansible.builtin.command: dnf install mysql -y
+# - name: install mysql 
+#   ansible.builtin.command: dnf install mysql -y
 
-- name: Load Schema
-  ansible.builtin.shell: mysql -h {{ MYSQL_HOST }} -uroot -p{{ sql_password }} < /app/schema/backend.sql
+# - name: Load Schema
+#   ansible.builtin.shell: mysql -h {{ MYSQL_HOST }} -uroot -p{{ sql_password }} < /app/schema/backend.sql
 
-- name: restart the mysql
-  ansible.builtin.service:
-    name: mysqld
-    state: started
-    enabled: yes
+# - name: restart the mysql
+#   ansible.builtin.service:
+#     name: mysqld
+#     state: started
+#     enabled: yes
